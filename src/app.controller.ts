@@ -17,7 +17,7 @@ export class AppController {
   @Get()
   @ApiOkResponse({ type: HelloWorldDto })
   async getHello(): Promise<HelloWorldDto> {
-    const users = await this.prisma.user.findMany({});
+    const users = await this.prisma.user.count({});
     console.log(users);
     return { message: this.appService.getHello() };
   }
