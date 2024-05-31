@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { BlockListService } from './block-list.service';
 import {
@@ -18,8 +19,10 @@ import {
 import { GetSessionInfoDto } from 'src/auth/dto/auth.dto';
 import { SessionInfo } from 'src/auth/session-info.decorator';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('block-list')
+@UseGuards(AuthGuard)
 export class BlockListController {
   constructor(private readonly blockListService: BlockListService) {}
 
